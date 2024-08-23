@@ -2,6 +2,7 @@ import Axios  from "axios";
 
 //endpoint
 //https://basit-backend.onrender.com
+//rtt
 export const baseURL = 'https://basit-backend.onrender.com/api/'
 const api = Axios.create({
     baseURL,

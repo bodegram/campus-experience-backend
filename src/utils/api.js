@@ -1,7 +1,7 @@
 import Axios  from "axios";
 
-//https://campus-8zi8.onrender.com
-export const baseURL = 'https://campus-8zi8.onrender.com'
+//https://basit-backend.onrender.com
+export const baseURL = 'https://basit-backend.onrender.com'
 const api = Axios.create({
     baseURL,
     headers:{

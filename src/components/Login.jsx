@@ -62,11 +62,11 @@ export default function Login() {
     }
   return (
    <div className='lg:flex block w-screen h-screen lg:gap-[100px]'>
-        <div className='flex-1 flex justify-center items-center ps-14 '>
+        <div className='flex-1 flex justify-center items-center ps-1'>
            <div>
              <div className='text-[#FF6915] text-[18px] font-bold mb-5'>Sign in</div>
              <div className='text-sm mb-2'>Sign in as {!account === null && account }</div>
-                    <div className='flex gap-2 mb-2 lg:w-[500px] w-full'>
+                    <div className='flex  gap-2 mb-2 lg:w-[500px] w-[200px]'>
                         <button className='px-10 py-4 w-full text-sm bg-[#FAFAFA] outline-none flex gap-1 justify-center' onClick={() => {
                             setAccount('Student')
                             setCollege('')
@@ -96,7 +96,7 @@ export default function Login() {
                         <>
                           <div className='mb-4'>
                         <label htmlFor="">Matric No</label><br />
-                        <input type="text" value={matricno} onChange={(e)=>setMatricno(e.target.value)} placeholder='Enter Matric No' className='lg:w-[500px] w-full border-[1px] border-[gainsboro] outline-none p-[14px] text-sm' name="" id="" />
+                        <input type="text" value={matricno} onChange={(e)=>setMatricno(e.target.value)} placeholder='Enter Matric No' className='lg:w-[500px]  w-full border-[1px] border-[gainsboro] outline-none p-[14px] text-sm' name="" id="" />
                     </div>
                     <div  className='mb-4'>
                         <label htmlFor="">Password</label><br />
@@ -139,8 +139,8 @@ export default function Login() {
              </div>
            </div>
         </div>
-        <div className='lg:flex-1'>
-           <img src={Img} className='w-full h-screen' alt="login-img" />
+        <div className='lg:flex-1 '>
+           <img src={Img} className='lg:w-full lg:h-screen' alt="login-img" />
         </div>
    </div>
   )

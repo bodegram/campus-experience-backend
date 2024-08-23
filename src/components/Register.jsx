@@ -88,7 +88,7 @@ export default function Register() {
     }
     return (
         <div className='flex w-screen h-screen gap-[100px]'>
-            <div className='flex-1 pt-3 ps-14 flex justify-center items-center '>
+            <div className='flex-1 pt-3 ps-5 flex justify-center items-center '>
                 <div>
                     <div className='text-[#FF6915] text-[18px] font-bold mb-2'>Create Account</div>
                     <div className='text-sm mb-2'>Sign up as {!account === null && account}</div>

@@ -6,7 +6,8 @@ export const notificationAsync = createAsyncThunk('auth/notification', async(_, 
      dispatch(setLoading())
     const token = localStorage.getItem('token')
      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
-     const {data} = await api.get('/user/notification/mynotification')
+     const {data} = await api.get('/notifications/')
+
      dispatch(notificationSuccess(data.data))
   }
   catch(error){

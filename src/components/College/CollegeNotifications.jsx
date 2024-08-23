@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import DashboardLayout from './layouts/DashboardLayout'
-import Notification from './Notification'
 import { useDispatch, useSelector } from 'react-redux'
-import { notificationAsync } from '../redux/slices/notificationSlice'
+import { notificationAsync } from '../../redux/slices/notificationSlice'
+import CollegeDashboard from './layouts/CollegeDashboard'
+import Notification from '../Notification'
 
-export default function Notifications() {
+export default function CollegeNotifications() {
     const { data } = useSelector(state => state.notification)
     const dispatch = useDispatch()
 
@@ -39,7 +39,7 @@ export default function Notifications() {
 
 
     return (
-        <DashboardLayout>
+        <CollegeDashboard>
             <section className='pr-2 pl-2'>
                 <div className='text-lg font-bold text-[#FF6519] mb-5'>Notifications</div>
                 <div className='border-[gainsboro] border-[1px] p-5'>
@@ -47,9 +47,9 @@ export default function Notifications() {
                         data?.map((item, index) => {
                             return (
                                 <Notification
-                                    key={item.id} // Assuming item has a unique id
-                                    title={item.title}
-                                    text={item.body}
+                                    key={item?.id} // Assuming item has a unique id
+                                    title={item?.title}
+                                    text={item?.body}
                                     time={timeSince(new Date(item?.createdAt))} // You might want to replace this with the actual time
                                     img={item?.image}
                                 />
@@ -60,6 +60,6 @@ export default function Notifications() {
                     )}
                 </div>
             </section>
-        </DashboardLayout>
+        </CollegeDashboard>
     )
 }

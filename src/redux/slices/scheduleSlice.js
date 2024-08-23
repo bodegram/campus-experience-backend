@@ -7,6 +7,23 @@ export const scheduleAsync = createAsyncThunk('schedule/scheduleAsync', async(_,
     const token = localStorage.getItem('token')
      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
      const {data} = await api.get('/schedule/myschedule')
+     console.log('my', data);
+     dispatch(scheduleSuccess(data.data))
+  }
+  catch(error){
+    dispatch(setError(error.response.data.message))
+    return rejectWithValue('An error occurred')
+  }
+})
+
+
+export const allScheduleAsync = createAsyncThunk('schedule/scheduleAsync', async(_, {dispatch, rejectWithValue})=>{
+  try{
+     dispatch(setLoading())
+    const token = localStorage.getItem('token')
+     api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+     const {data} = await api.get('/schedule/')
+     console.log('my', data);
      dispatch(scheduleSuccess(data.data))
   }
   catch(error){

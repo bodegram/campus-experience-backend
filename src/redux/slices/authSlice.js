@@ -65,6 +65,22 @@ export const updatePasswordAsync = createAsyncThunk('auth/updatePassword', async
   }
 })
 
+export const usersAsync = createAsyncThunk('auth/users', async(payload,{dispatch,rejectWithValue})=>{
+  try{
+    dispatch(setLoading())
+    const token = localStorage.getItem('token')
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    const {data} = await api.get(`/user/${payload}`)
+    dispatch(usersSuccess(data.data))
+
+  }
+  catch(error){
+    console.log(error);
+    dispatch(setError(error.response.data.message))
+    return rejectWithValue('An error occurred')
+  }
+})
+
 const initialState = {
     loading:false,
     error:false,
@@ -74,7 +90,8 @@ const initialState = {
     isRegistered: false,
     message: null,
     isLoggedIn:false,
-    profileData:null
+    profileData:null,
+    users:null
 }
 
 const authSlice = createSlice({
@@ -117,10 +134,13 @@ const authSlice = createSlice({
       },
       updatePasswordSuccess: (state, action)=>{
         state.message = action.payload
+      },
+      usersSuccess: (state, action)=>{
+        state.users = action.payload
       }
     }
 })
 
-export const {setLoading, setError, loginSuccess, registerSuccess, clearLog, logout, profileSuccess, updatePasswordSuccess} = authSlice.actions
+export const {setLoading, setError, loginSuccess, registerSuccess, clearLog, logout, profileSuccess, updatePasswordSuccess, usersSuccess} = authSlice.actions
 
 export default authSlice

@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AdminDashboard from './layouts/AdminDashboard'
 import Card from './Card'
 import usersLogo from '../../assets/users.png'
 import userTwoLogo from '../../assets/user2.png'
 import userCheckLogo from '../../assets/usercheck.png'
 import { FaEllipsisVertical } from 'react-icons/fa6'
+import { useDispatch, useSelector } from 'react-redux'
+import { allScheduleAsync } from '../../redux/slices/scheduleSlice'
 
 
 export default function Dashboard() {
+    const {data} = useSelector(state=>state.schedule)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+       dispatch(allScheduleAsync())
+    }, [dispatch])
   return (
     <AdminDashboard>
         <section className='pl-2 pr-2 pt-5'>
@@ -32,25 +39,22 @@ export default function Dashboard() {
                             </tr>
                         </thead>
                         <tbody className='text-center'>
-                            <tr className='border-b-[1px] border-b-[gainsboro]'>
-                                <td>1</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><FaEllipsisVertical/></td>
-                            </tr>
-                            <tr className='border-b-[1px] border-b-[gainsboro]'>
-                                <td>2</td>
-                                <td>The Eagles</td>
-                                <td>1972</td>
-                            </tr>
-                            <tr className='border-b-[1px] border-b-[gainsboro]'>
-                                <td>3</td>
-                                <td>Earth, Wind, and Fire</td>
-                                <td>1975</td>
-                            </tr>
+                          {
+                            data?.map((item, index)=>{
+                                return(
+                                    <tr className='border-b-[1px] border-b-[gainsboro]'>
+                                    <td>{index + 1}</td>
+                                    <td>{item.code}</td>
+                                    <td>{item.title}</td>
+                                    <td>{item.status}</td>
+                                    <td>{item.examdate} [{item.start} - {item.stop}]</td>
+                                    <td>{item.venue}</td>
+                                    <td><FaEllipsisVertical/></td>
+                                </tr>
+                                )
+                            })
+                          }
+                       
                         </tbody>
                     </table>
                 </div>

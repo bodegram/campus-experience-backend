@@ -18,11 +18,17 @@ import Exam from './components/Exam'
 
 //college
 import Check from './components/College/Check'
+import CollegeNotifications from './components/College/CollegeNotifications';
 
 //Admin
 import AdminLogin from './components/Admin/AdminLogin'
 import Dashboard from './components/Admin/Dashboard'
 import PushNotification from './components/Admin/PushNotification'
+import AdminNotifications from './components/Admin/AdminNotifications';
+import AllSchedules from './components/Admin/AllSchedules';
+import AddSchedule from './components/Admin/AddSchedule';
+import Students from './components/Admin/Students';
+import Colleges from './components/Admin/Colleges';
 
 function App() {
 
@@ -57,6 +63,10 @@ function App() {
           <Route path='/college/check' element={<CollegeProtectedRoutes>
             <Check />
           </CollegeProtectedRoutes>} />
+          <Route path='/college/notifications' element={<CollegeProtectedRoutes>
+            <CollegeNotifications />
+          </CollegeProtectedRoutes>} />
+          
 
       //Admin routes
           <Route path='/admin/login' element={<AdminLogin />} />
@@ -65,6 +75,21 @@ function App() {
           </AdminProtectedRoutes>} />
           <Route path='/admin/push-notification' element={<AdminProtectedRoutes>
             <PushNotification />
+          </AdminProtectedRoutes>} />
+          <Route path='/admin/notifications' element={<AdminProtectedRoutes>
+            <AdminNotifications />
+          </AdminProtectedRoutes>} />
+          <Route path='/admin/schedule' element={<AdminProtectedRoutes>
+            <AllSchedules />
+          </AdminProtectedRoutes>} />
+          <Route path='/admin/add-schedule' element={<AdminProtectedRoutes>
+            <AddSchedule />
+          </AdminProtectedRoutes>} />
+          <Route path='/admin/students' element={<AdminProtectedRoutes>
+            <Students />
+          </AdminProtectedRoutes>} />
+          <Route path='/admin/colleges' element={<AdminProtectedRoutes>
+            <Colleges />
           </AdminProtectedRoutes>} />
 
         </Routes>

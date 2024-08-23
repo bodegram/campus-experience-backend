@@ -30,7 +30,14 @@ export default function Login() {
         toast.success('Logged in successfully')
         dispatch(clearLog())
         setTimeout(()=>{
+          if(localStorage.getItem('account') === 'Student'){
             navigate('/map')
+          }
+
+          if(localStorage.getItem('account') === 'Faculty'){
+            navigate('/college/check')
+          }
+           
         }, 2000)
        }
     }, [isLoggedIn])
